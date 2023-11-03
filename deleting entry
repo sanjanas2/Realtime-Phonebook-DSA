@@ -1,0 +1,27 @@
+PhoneBookEntry* deleteEntry(PhoneBookEntry* head, char* name) { // Changed the parameter to a pointer
+    if (head == NULL) {
+        return NULL;
+    }
+
+    if (strcmp(head->name, name) == 0) { // Corrected the comparison operator
+        PhoneBookEntry* temp = head;
+        head = head->next;
+        free(temp);
+        return head;
+    }
+
+    PhoneBookEntry* current = head;
+    while (current->next != NULL) {
+        if (strcmp(current->next->name, name) == 0) {
+            PhoneBookEntry* temp = current->next;
+            current->next = temp->next;
+            free(temp);
+            return head;
+        }
+        current = current->next;
+    }
+
+    printf("Entry not found.\n");
+    return head;
+}
+
