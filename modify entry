@@ -1,0 +1,41 @@
+void modifyEntry(PhoneBookEntry* head, char* name) { // Changed the return type to void
+    PhoneBookEntry* current = head;
+    while (current != NULL) { // Changed the condition
+        if (strcmp(current->name, name) == 0) {
+            printf("Enter new phone number: ");
+            scanf("%s", current->phone);
+            return;
+        }
+        current = current->next;
+    }
+    printf("Entry not found.\n");
+}
+
+void freeEntries(PhoneBookEntry* head) { // Changed the parameter to a pointer
+    while (head != NULL) {
+        PhoneBookEntry* temp = head;
+        head = head->next;
+        free(temp);
+    }
+}
+
+void searchEntry(PhoneBookEntry* head, char* name) {
+    PhoneBookEntry* current = head;
+    while (current != NULL) {
+        if (strcmp(current->name, name) == 0) {
+            printf("Name: %s, Phone: %s\n", current->name, current->phone);
+            return;
+        }
+        current = current->next;
+    }
+    printf("Entry not found.\n");
+}
+
+void displayEntries(PhoneBookEntry* head) {
+    PhoneBookEntry* current = head;
+    while (current != NULL) {
+        printf("Name: %s, Phone: %s\n", current->name, current->phone);
+        current = current->next;
+    }
+}
+
