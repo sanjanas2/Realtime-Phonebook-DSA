@@ -1,0 +1,84 @@
+int main() {
+    PhoneBookEntry* phoneBook = NULL;
+    char password[20];
+    char name[50];
+    int option;
+
+    changeBackgroundColor(1); // Changed the color code
+    printf("\n");
+    printf("\t\t\t\t\tonly Authorized People Allowed\n");
+    printf("\t\t\t\t\tEnter password: ");
+    scanf("%s", password);
+
+    if (strcmp(password, "project") != 0) {
+        printf("Invalid password. Exiting...\n");
+        return 1;
+    }
+
+    while (1) { // Corrected the while loop syntax
+
+        changeBackgroundColor(23);
+
+        printf("\nMENU\n");
+
+ printf("1. Add\n");
+        printf("2. Search\n");
+        printf("3. Modify\n");
+        printf("4. Delete\n");
+        printf("5. Display\n"); // Corrected the option number
+        printf("6. Exit\n");
+
+        printf("Enter option: ");
+        scanf("%d", &option);
+
+        changeBackgroundColor(23);
+
+        switch (option) {
+
+        case 1:
+            changeBackgroundColor(23);
+            phoneBook = addEntry(phoneBook);
+            break;
+
+        case 2:
+            changeBackgroundColor(23);
+            printf("Enter name to search: ");
+            scanf("%s", name);
+            searchEntry(phoneBook, name);
+            break;
+
+        case 3:
+changeBackgroundColor(23);
+            printf("Enter name to modify: ");
+            scanf("%s", name);
+            modifyEntry(phoneBook, name);
+            break;
+
+        case 4:
+            changeBackgroundColor(23);
+            printf("Enter name to delete: ");
+            scanf("%s", name);
+            phoneBook = deleteEntry(phoneBook, name);
+            break;
+
+        case 5:
+            changeBackgroundColor(23);
+            displayEntries(phoneBook);
+            break;
+
+        case 6:
+            changeBackgroundColor(1);
+            printf("Exiting...\n");
+            freeEntries(phoneBook);
+            changeBackgroundColor(23); // Reset background color to default
+            printf("\nKOENA SARKAR\n");
+            printf("\nTeam members: \n");
+            printf("AASTHA YADAV\n");
+            printf("DIKSHA SINGH\n");
+            return 0;
+ default:
+            printf("Invalid option. Please try again. \n");
+            break;
+        }
+    }
+}
