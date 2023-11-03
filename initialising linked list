@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Structure for a phone book entry
+typedef struct PhoneBookEntry {
+    char name[50];
+    char phone[15];
+    struct PhoneBookEntry* next;
+} PhoneBookEntry;
+
+void changeBackgroundColor(int colorCode) {
+    printf("\033[48;5;%dm", colorCode); // Corrected the escape sequence format
+}
+
+PhoneBookEntry* addEntry(PhoneBookEntry* head) { // Changed the parameter to a pointer
+    PhoneBookEntry* newEntry = (PhoneBookEntry*)malloc(sizeof(PhoneBookEntry));
+    printf("Enter name: ");
+    scanf("%s", newEntry->name);
+    printf("Enter phone number: ");
+    scanf("%s", newEntry->phone);
+    newEntry->next = head;
+    return newEntry;
+}
